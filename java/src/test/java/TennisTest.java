@@ -1,12 +1,13 @@
-import static org.junit.Assert.*;
-
-import java.util.Arrays;
-import java.util.Collection;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
+
+import java.util.Arrays;
+import java.util.Collection;
+
+import static org.junit.Assert.assertEquals;
+
 
 @RunWith(Parameterized.class)
 public class TennisTest {
@@ -21,7 +22,7 @@ public class TennisTest {
         this.expectedScore = expectedScore;
     }
     
-    @Parameters(name = "{0}:{1} = {2}")
+    @Parameters
     public static Collection<Object[]> getAllScores() {
         return Arrays.asList(new Object[][] {
                 { 0, 0, "Love-All" },
@@ -96,7 +97,7 @@ public class TennisTest {
 
     @Test
     public void checkAllScoresTennisGame4() {
-        TennisGame game = new TennisGame4("player1", "player2");
+        TennisGame4 game = new TennisGame4("player1", "player2");
         checkAllScores(game);
     }
 
