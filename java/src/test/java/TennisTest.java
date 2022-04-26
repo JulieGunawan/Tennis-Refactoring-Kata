@@ -23,6 +23,7 @@ public class TennisTest {
     }
     
     @Parameters
+    //(name = "{0}:{1} = {2}")
     public static Collection<Object[]> getAllScores() {
         return Arrays.asList(new Object[][] {
                 { 0, 0, "Love-All" },
