@@ -22,11 +22,11 @@ public class TennisGame1 implements TennisGame
     public String getScore() {
         String score = "";
         int tempScore=0;
-        if (m_score1==m_score2)
+        if (scoreIsEqual(m_score1, m_score2))
         {
             score = banana();
         }
-        else if (m_score1>=4 || m_score2>=4)
+        else if (aPlayerIsAboutToWin())
         {
             score = apple();
         }
@@ -37,11 +37,19 @@ public class TennisGame1 implements TennisGame
         return score;
     }
 
+    private boolean scoreIsEqual(int m_score1, int m_score2) {
+        return m_score1 == m_score2;
+    }
+
+    private boolean aPlayerIsAboutToWin() {
+        return m_score1>=4 || m_score2>=4;
+    }
+
     private String orange(String score) {
         int tempScore;
         for (int i = 1; i<3; i++)
         {
-            if (i==1) tempScore = m_score1;
+            if (scoreIsEqual(i, 1)) tempScore = m_score1;
             else { score +="-"; tempScore = m_score2;}
             switch(tempScore)
             {
@@ -65,8 +73,8 @@ public class TennisGame1 implements TennisGame
     private String apple() {
         String score;
         int minusResult = m_score1-m_score2;
-        if (minusResult==1) score ="Advantage player1";
-        else if (minusResult ==-1) score ="Advantage player2";
+        if (scoreIsEqual(minusResult, 1)) score ="Advantage player1";
+        else if (scoreIsEqual(minusResult, -1)) score ="Advantage player2";
         else if (minusResult>=2) score = "Win for player1";
         else score ="Win for player2";
         return score;
